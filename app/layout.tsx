@@ -1,15 +1,12 @@
+import SideNavbarMain from "@/components/SideNavbar/SideNavbarMain";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import HeaderMain from "@/components/Header/HeaderMain";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -24,12 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
-      >
+      <body className={`${inter.variable}  antialiased `}>
+        {/* <SideNavbarMain /> */}
         <main className="max-w-screen min-h-screen overflow-hidden bg-[#1C2E3D]">
-          {/* <Navbar /> */}
-          <div className="transition-all duration-300 py-[16px] px-[8px] lg:px-[2rem] xl:px-[8rem]">
+          <HeaderMain />
+          <div className="transition-all duration-300 py-[16px] px-[8px] lg:px-[8rem] xl:px-[16rem] ">
             {children}
           </div>
         </main>
