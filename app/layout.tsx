@@ -25,7 +25,7 @@ export default function RootLayout({
         {/* <SideNavbarMain /> */}
         <main className="max-w-screen min-h-screen overflow-hidden bg-[#1C2E3D]">
           <HeaderMain />
-          <div className="transition-all duration-300 py-[16px] px-[8px] lg:px-[8rem] xl:px-[16rem] ">
+          <div className="transition-all duration-300 py-[16px] px-[8px] lg:px-[8rem] xl:px-[8rem] ">
             {children}
           </div>
         </main>
