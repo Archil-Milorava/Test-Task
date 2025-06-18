@@ -25,9 +25,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        {children}
+        <main className="max-w-screen min-h-screen overflow-hidden bg-[#1C2E3D]">
+          {/* <Navbar /> */}
+          <div className="transition-all duration-300 py-[16px] px-[8px] lg:px-[2rem] xl:px-[8rem]">
+            {children}
+          </div>
+        </main>
       </body>
     </html>
   );
