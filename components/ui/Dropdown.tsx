@@ -85,6 +85,7 @@ const Dropdown: React.FC<DropdownProps> = ({
               <Image
                 src={dice}
                 alt={item.label}
+                priority
                 className="filter brightness-0 invert w-[16px] h-[16px] object-contain"
               />
               <span>{item.label}</span>

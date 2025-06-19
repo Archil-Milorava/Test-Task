@@ -16,7 +16,7 @@ const CasinoDescription = () => {
       {/* Small header at top left */}
       <h2 className="text-lg mb-4">CASINO Casino</h2>
 
-      {/* Description content */}
+      {/* content description  */}
       <div
         className={`transition-all duration-300 ease-in-out text-sm ${
           expanded ? "max-h-[2000px]" : "max-h-[255px] md:max-h-[250px]"
@@ -55,12 +55,12 @@ const CasinoDescription = () => {
         )}
       </div>
 
-      {/* Gradient overlay when collapsed */}
+  
       {!expanded && (
         <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#1E2A38] to-transparent pointer-events-none"></div>
       )}
 
-      {/* Enhanced Read More button */}
+   
       {/* Read More button */}
       <div
         className={`flex justify-center relative ${

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import img1 from "./imageBig1.png";
@@ -15,10 +15,20 @@ const GridLayoutMain = () => {
     <div className="my-2 w-full h-[200px] md:h-[250px] grid grid-cols-4 md:grid-cols-6 grid-rows-2 gap-2 rounded-[3px] overflow-hidden">
       {/* Big images */}
       <div className="col-span-2 row-span-2 rounded-[3px] overflow-hidden">
-        <Image src={img1} alt="Big 1" className="w-full h-full object-cover" />
+        <Image
+          priority
+          src={img1}
+          alt="Big 1"
+          className="w-full h-full object-cover"
+        />
       </div>
       <div className="col-span-2 row-span-2 rounded-[3px] overflow-hidden">
-        <Image src={img2} alt="Big 2" className="w-full h-full object-cover" />
+        <Image
+          priority
+          src={img2}
+          alt="Big 2"
+          className="w-full h-full object-cover"
+        />
       </div>
 
       {/* Small images */}
@@ -28,10 +38,10 @@ const GridLayoutMain = () => {
           className="col-span-1 row-span-1 rounded-[3px] overflow-hidden"
         >
           <Image
+            priority
             src={img}
             alt={`Small ${i}`}
             className="w-full h-full object-cover"
-            loading="lazy"
           />
         </div>
       ))}

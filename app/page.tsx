@@ -8,8 +8,6 @@ import SearchLayout from "@/features/Filtering/SearchMain";
 import { fetchGames } from "@/lib/api/gamesAPI";
 import { GamesResponse } from "@/types/games";
 
-
-
 const categories = [
   { name: "featured-games", icon: "/icons/featured.png" },
   { name: "new-releases", icon: "/icons/new.png" },

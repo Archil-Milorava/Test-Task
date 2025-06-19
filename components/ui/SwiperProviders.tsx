@@ -64,18 +64,6 @@ const SwiperProviders = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        {/* Navigation buttons */}
-        {/* <button className="providers-prev absolute left-2 top-1/2 -translate-y-1/2 z-10 w-[35px] h-[35px] bg-[#253241] text-white flex items-center justify-center hover:bg-[#1a2633] transition-colors rounded-full shadow-lg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M15 18l-6-6 6-6"/>
-          </svg>
-        </button>
-        <button className="providers-next absolute right-2 top-1/2 -translate-y-1/2 z-10 w-[35px] h-[35px] bg-[#253241] text-white flex items-center justify-center hover:bg-[#1a2633] transition-colors rounded-full shadow-lg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M9 18l6-6-6-6"/>
-          </svg>
-        </button> */}
       </div>
     </div>
   );
