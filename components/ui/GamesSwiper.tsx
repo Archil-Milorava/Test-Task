@@ -42,6 +42,7 @@ const SwiperMain = ({ games, category }: SwiperMainProps) => {
               <div className=" rounded-[5px] w-[150px] h-[200px] overflow-hidden relative  cursor-pointer">
                 <Image
                   src={game.image}
+                  fill
                   alt="gameImage"
                   className="object-cover w-full h-full"
                 />
