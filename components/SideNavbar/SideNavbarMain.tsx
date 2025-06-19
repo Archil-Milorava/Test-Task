@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import menu_Image from "@/assets/menu_image.png";
 
-// Imported icons
 import promotions_icon from "./assets/promotions_icon.png";
 import blackjack_image from "./assets/blackjack_image.png";
 import crash_image from "./assets/crash_image.png";
@@ -72,14 +71,14 @@ const sidebarCategories = [
 ];
 
 const SideNavbarMain = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   return (
-    <div
-      className={`sticky z-[9999] hidden lg:block ${
-        collapsed ? "w-[60px]" : "w-[240px]"
-      } h-full bg-[#162231] text-[#C1C9E5] flex flex-col  py-4 transition-all duration-300 top-0`}
-    >
+<div
+  className={`fixed z-[40] hidden lg:block top-0 left-0 ${
+    collapsed ? "w-[60px]" : "w-[240px]"
+  } h-screen bg-[#162231] text-[#C1C9E5] flex flex-col py-4 transition-all duration-300`}
+>
       {/* Toggle button */}
       <div
         className="px-4 mb-6 cursor-pointer"

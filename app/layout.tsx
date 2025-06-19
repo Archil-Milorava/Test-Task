@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import HeaderMain from "@/components/Header/HeaderMain";
+import FooterMain from "@/features/footer/FooterMain";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,14 +22,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable}  antialiased `}>
-        {/* <SideNavbarMain /> */}
-        <main className="max-w-screen min-h-screen overflow-hidden bg-[#1C2E3D]">
-          <HeaderMain />
-          <div className="transition-all duration-300 py-[16px] px-[8px] lg:px-[8rem] xl:px-[8rem] ">
-            {children}
-          </div>
-        </main>
+      <body className={`${inter.variable} antialiased`}>
+        <div className="flex">
+          <SideNavbarMain />
+          <main className="flex-1 min-h-screen bg-[#1C2E3D] overflow-hidden">
+            <HeaderMain />
+            <div className="transition-all duration-300 py-[16px] px-[8px] lg:px-[8rem] xl:px-[16rem]">
+              {children}
+            </div>
+            <FooterMain />
+          </main>
+        </div>
       </body>
     </html>
   );

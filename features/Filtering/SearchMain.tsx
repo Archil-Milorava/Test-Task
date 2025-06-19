@@ -16,7 +16,7 @@ const items = [
 
 const SearchLayout = () => {
   return (
-    <div className=" my-4 h-[15rem] flex flex-col gap-2">
+    <div className=" my-4  flex flex-col gap-2">
       <div className=" flex gap-1">
         <Input
           icon={<BiSearchAlt size={20} />}

@@ -1,33 +1,64 @@
-import GridLayoutMain from "@/components/GridLayoutMain/GridLayoutMain";
-import SliderMain from "@/components/PrimarySlider/SliderMain";
-import Swiper from "@/components/ui/Swiper";
-import SearchLayout from "@/features/Filtering/SearchMain";
-
-import icon from "./../assets/SVGRepo_iconCarrier.png";
-import PaymentOptions from "@/components/PaymentOptions";
 import CasinoDescription from "@/components/CasinoDescription";
+import GridLayoutMain from "@/components/GridLayoutMain/GridLayoutMain";
+import PaymentOptions from "@/components/PaymentOptions";
+import SliderMain from "@/components/PrimarySlider/SliderMain";
+import SwiperMain from "@/components/ui/GamesSwiper";
+import SwiperProviders from "@/components/ui/SwiperProviders";
+import SearchLayout from "@/features/Filtering/SearchMain";
+import FooterMain from "@/features/footer/FooterMain";
+import { GamesResponse } from "@/types/games";
 
-const page = async () => {
-  // const res = await fetch("https://api.remailer.eu/games/list.php")
+const fetchGames = async (): Promise<GamesResponse> => {
+  const res = await fetch("https://api.remailer.eu/games/list.php");
 
-  // const data = await res.json()
+  if (!res.ok) {
+    throw new Error("Failed to fetch games");
+  }
 
-  // const games = data.data
+  return await res.json();
+};
 
-  // console.log(games);
+// Define your categories with optional icons
+const categories = [
+  { name: "featured-games", icon: "/icons/featured.png" },
+  { name: "new-releases", icon: "/icons/new.png" },
+  { name: "hot-games", icon: "/icons/hot.png" },
+  { name: "bonus-buy", icon: "/icons/bonus.png" },
+  { name: "live", icon: "/icons/live.png" },
+];
+
+const Page = async () => {
+  let gamesResponse: GamesResponse;
+
+  try {
+    gamesResponse = await fetchGames();
+  } catch (error) {
+    console.error("Error fetching games:", error);
+    return <div>Error loading games. Please try again later.</div>;
+  }
 
   return (
-    <div className="w-full min-h-screen  my-2">
+    <div className="w-full min-h-screen my-2">
       <SliderMain />
       <GridLayoutMain />
       <SearchLayout />
-      <div className="p-4">
-        {/* <Swiper icon={icon} title="New Releases" items={games} /> */}
-      </div>
+
+      {/* Render swipers for each category */}
+      {categories.map((category) => (
+        <div key={category.name} className="p-4">
+          <SwiperMain
+            games={gamesResponse.data}
+            category={category.name}
+            icon={category.icon}
+          />
+        </div>
+      ))}
+
+      <SwiperProviders />
       <PaymentOptions />
       <CasinoDescription />
     </div>
   );
 };
 
-export default page;
+export default Page;
