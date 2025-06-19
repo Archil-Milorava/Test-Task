@@ -36,7 +36,7 @@ const SwiperProviders = () => {
       <div className="h-[45px] w-full flex items-center justify-between ">
         <div className="flex gap-2 items-center">
           <Image src={icon} alt="asd" />
-          <p className="text-[16px] font-medium">Hot Games</p>
+          <p className="text-[16px] font-medium">Providers</p>
         </div>
       </div>
 

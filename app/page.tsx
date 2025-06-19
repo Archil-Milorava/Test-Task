@@ -5,20 +5,11 @@ import SliderMain from "@/components/PrimarySlider/SliderMain";
 import SwiperMain from "@/components/ui/GamesSwiper";
 import SwiperProviders from "@/components/ui/SwiperProviders";
 import SearchLayout from "@/features/Filtering/SearchMain";
-import FooterMain from "@/features/footer/FooterMain";
+import { fetchGames } from "@/lib/api/gamesAPI";
 import { GamesResponse } from "@/types/games";
 
-const fetchGames = async (): Promise<GamesResponse> => {
-  const res = await fetch("https://api.remailer.eu/games/list.php");
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch games");
-  }
 
-  return await res.json();
-};
-
-// Define your categories with optional icons
 const categories = [
   { name: "featured-games", icon: "/icons/featured.png" },
   { name: "new-releases", icon: "/icons/new.png" },
@@ -43,14 +34,9 @@ const Page = async () => {
       <GridLayoutMain />
       <SearchLayout />
 
-      {/* Render swipers for each category */}
       {categories.map((category) => (
         <div key={category.name} className="p-4">
-          <SwiperMain
-            games={gamesResponse.data}
-            category={category.name}
-            icon={category.icon}
-          />
+          <SwiperMain games={gamesResponse.data} category={category.name} />
         </div>
       ))}
 

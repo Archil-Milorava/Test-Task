@@ -31,6 +31,7 @@ const GridLayoutMain = () => {
             src={img}
             alt={`Small ${i}`}
             className="w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
       ))}

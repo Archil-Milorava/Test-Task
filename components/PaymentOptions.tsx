@@ -12,7 +12,7 @@ const images = [apple, google, mc, neteller, revolut, skrill];
 
 const PaymentOptions = () => {
   return (
-    <main className="bg-[#10202D] h-[355px] md:h-[110px] w-full p-2 rounded-[5px] overflow-hidden flex flex-col md:flex-row md:items-center gap-2 justify-around text-white">
+    <main className="bg-[#10202D] h-[355px] md:h-[110px] w-full p-2 rounded-[5px] overflow-hidden flex flex-col md:flex-row md:items-center gap-2 justify-between md:px-4 my-12 text-white">
       <div className="h-1/4 md:h-full flex items-center justify-center md:w-1/4">
         <h1 className="text-[20px] font-bold text-center ">
           You dont hae crypto? <br /> Dont worry

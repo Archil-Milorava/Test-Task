@@ -1,9 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
-import menu_Image from "@/assets/menu_image.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Mousewheel } from "swiper/modules";
+import "swiper/css";
 
+import menu_Image from "@/assets/menu_image.png";
 import promotions_icon from "./assets/promotions_icon.png";
 import blackjack_image from "./assets/blackjack_image.png";
 import crash_image from "./assets/crash_image.png";
@@ -72,54 +75,69 @@ const sidebarCategories = [
 
 const SideNavbarMain = () => {
   const [collapsed, setCollapsed] = useState(true);
+  const sidebarRef = useRef(null);
 
   return (
-<div
-  className={`fixed z-[40] hidden lg:block top-0 left-0 ${
-    collapsed ? "w-[60px]" : "w-[240px]"
-  } h-screen bg-[#162231] text-[#C1C9E5] flex flex-col py-4 transition-all duration-300`}
->
-      {/* Toggle button */}
-      <div
-        className="px-4 mb-6 cursor-pointer"
-        onClick={() => setCollapsed(!collapsed)}
+    <div
+      ref={sidebarRef}
+      className={`fixed z-[40] hidden lg:block top-0 left-0 ${
+        collapsed ? "w-[60px]" : "w-[240px]"
+      } h-screen bg-[#162231] text-[#C1C9E5] flex flex-col py-4 transition-all duration-300 ease-out will-change-transform overflow-hidden`}
+    >
+      <Swiper
+        direction="vertical"
+        slidesPerView="auto"
+        freeMode={true}
+        mousewheel={true}
+        modules={[FreeMode, Mousewheel]}
+        className="h-full !overflow-visible"
       >
-        <Image
-          src={menu_Image}
-          alt="menu"
-          className="filter brightness-0 invert"
-          width={22}
-          height={22}
-        />
-      </div>
-
-      {/* Sidebar sections */}
-      <div className="flex flex-col w-full px-2 space-y-3">
-        {sidebarCategories.map((category, catIndex) => (
+        <SwiperSlide className="!h-auto !flex flex-col">
+          {/* Toggle button */}
           <div
-            key={catIndex}
-            className="flex flex-col rounded-[4px] overflow-hidden"
+            className="px-4 mb-6 cursor-pointer min-w-[32px]"
+            onClick={() => setCollapsed(!collapsed)}
           >
-            {category.items.map((item, itemIndex) => (
+            <Image
+              src={menu_Image}
+              alt="menu"
+              className="filter brightness-0 invert"
+              width={22}
+              height={22}
+            />
+          </div>
+
+          {/* Sidebar sections */}
+          <div className="flex flex-col w-full px-2 space-y-3 min-w-[56px] flex-grow">
+            {sidebarCategories.map((category, catIndex) => (
               <div
-                key={itemIndex}
-                className="w-full flex items-center gap-3 px-3 py-2 bg-[#223446] hover:bg-[#2C3E50] cursor-pointer transition"
+                key={catIndex}
+                className="flex flex-col rounded-[4px] overflow-hidden min-w-0"
               >
-                <Image
-                  src={item.icon}
-                  alt={item.label}
-                  className="filter brightness-0 invert w-[20px] h-[20px]"
-                />
-                {!collapsed && (
-                  <span className="text-[14px] text-white font-medium">
-                    {item.label}
-                  </span>
-                )}
+                {category.items.map((item, itemIndex) => (
+                  <div
+                    key={itemIndex}
+                    className={`w-full flex items-center gap-3 px-3 py-2 bg-[#223446] hover:bg-[#2C3E50] cursor-pointer transition ${
+                      collapsed ? "min-h-[40px] justify-center" : ""
+                    }`}
+                  >
+                    <Image
+                      src={item.icon}
+                      alt={item.label}
+                      className="filter brightness-0 invert w-[20px] h-[20px] min-w-[20px]"
+                    />
+                    {!collapsed && (
+                      <span className="text-[14px] text-white font-medium whitespace-nowrap overflow-hidden text-ellipsis">
+                        {item.label}
+                      </span>
+                    )}
+                  </div>
+                ))}
               </div>
             ))}
           </div>
-        ))}
-      </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
   );
 };
